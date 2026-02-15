@@ -64,8 +64,8 @@ const Contact = () => {
               <h2 className="text-xl font-heading font-bold">Contactgegevens</h2>
               <div className="space-y-4">
                 {[
-                  { icon: Phone, label: "Telefoon", value: "06 - 1234 5678", href: "tel:+31612345678" },
-                  { icon: Mail, label: "E-mail", value: "info@slotenmakermaarten.nl", href: "mailto:info@slotenmakermaarten.nl" },
+                  { icon: Phone, label: "Telefoon", value: "+313-44700234", href: "tel:+31344700234" },
+                  { icon: Mail, label: "E-mail", value: "contact@slotenmakermaarten.nl", href: "mailto:contact@slotenmakermaarten.nl" },
                   { icon: MapPin, label: "Adres", value: "Amsterdam, Nederland" },
                   { icon: Clock, label: "Bereikbaarheid", value: "24/7 — 365 dagen per jaar" },
                 ].map((c) => (
