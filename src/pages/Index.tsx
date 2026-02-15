@@ -49,7 +49,7 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="text-lg px-8 py-6 font-bold">
-                <a href="tel:+31612345678">
+                <a href="tel:+31344700234">
                   <Phone className="h-5 w-5" />
                   Bel Nu
                 </a>
@@ -177,9 +177,9 @@ const Index = () => {
           </h2>
           <p className="text-primary-foreground/90 text-lg">Wij zijn 24/7 bereikbaar en binnen 30 minuten bij u.</p>
           <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 font-bold border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent">
-            <a href="tel:+31612345678">
+            <a href="tel:+31344700234">
               <Phone className="h-5 w-5" />
-              06 - 1234 5678
+              313 - 4470 0234
             </a>
           </Button>
         </div>
