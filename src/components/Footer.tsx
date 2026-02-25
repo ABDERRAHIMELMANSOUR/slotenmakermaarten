@@ -44,11 +44,11 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-background/70">
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary flex-shrink-0" />
-                <a href="tel:+31612345678" className="hover:text-primary transition-colors">06 - 1234 5678</a>
+                <a href="tel:+31344700234" className="hover:text-primary transition-colors">+31 344 700 234</a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary flex-shrink-0" />
-                <a href="mailto:info@slotenmakermaarten.nl" className="hover:text-primary transition-colors">info@slotenmakermaarten.nl</a>
+                <a href="mailto:contact@slotenmakermaarten.nl" className="hover:text-primary transition-colors">contact@slotenmakermaarten.nl</a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />

@@ -64,7 +64,7 @@ const Contact = () => {
               <h2 className="text-xl font-heading font-bold">Contactgegevens</h2>
               <div className="space-y-4">
                 {[
-                  { icon: Phone, label: "Telefoon", value: "+313-44700234", href: "tel:+31344700234" },
+                  { icon: Phone, label: "Telefoon", value: "+31 344 700 234", href: "tel:+31344700234" },
                   { icon: Mail, label: "E-mail", value: "contact@slotenmakermaarten.nl", href: "mailto:contact@slotenmakermaarten.nl" },
                   { icon: MapPin, label: "Adres", value: "Amsterdam, Nederland" },
                   { icon: Clock, label: "Bereikbaarheid", value: "24/7 — 365 dagen per jaar" },
@@ -95,9 +95,9 @@ const Contact = () => {
               </div>
 
               <Button asChild size="lg" className="w-full font-bold mt-4">
-                <a href="tel:+31612345678">
+                <a href="tel:+31344700234">
                   <Phone className="h-5 w-5" />
-                  Bel Direct — 06 1234 5678
+                  Bel Direct — +31 344 700 234
                 </a>
               </Button>
             </div>
