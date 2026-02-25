@@ -179,7 +179,7 @@ const Index = () => {
           <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 font-bold border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent">
             <a href="tel:+31344700234">
               <Phone className="h-5 w-5" />
-              313 - 4470 0234
+              +31 344 700 234
             </a>
           </Button>
         </div>

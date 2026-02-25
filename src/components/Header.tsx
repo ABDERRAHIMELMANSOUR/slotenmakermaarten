@@ -39,12 +39,12 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="tel:+31612345678" className="hidden md:flex items-center gap-2 text-sm font-semibold text-foreground">
+          <a href="tel:+31344700234" className="hidden md:flex items-center gap-2 text-sm font-semibold text-foreground">
             <Phone className="h-4 w-4 text-primary" />
-            06 - 1234 5678
+            +31 344 700 234
           </a>
           <Button asChild className="hidden sm:inline-flex font-semibold">
-            <a href="tel:+31612345678">
+            <a href="tel:+31344700234">
               <Phone className="h-4 w-4" />
               Bel Nu
             </a>
@@ -82,7 +82,7 @@ const Header = () => {
               className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-primary"
             >
               <Phone className="h-4 w-4" />
-              06 - 1234 5678
+              +31 344 700 234
             </a>
           </nav>
         </div>
