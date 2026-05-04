@@ -69,6 +69,9 @@ const Contact = () => {
                     <Send className="h-4 w-4" />
                     Verstuur Bericht
                   </Button>
+                  <p className="text-xs text-muted-foreground text-center">
+                    Na het klikken op verzenden opent uw e-mailprogramma met een vooraf ingevuld bericht.
+                  </p>
                 </form>
               </CardContent>
             </Card>
