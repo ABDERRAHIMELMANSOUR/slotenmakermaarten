@@ -12,8 +12,22 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Bericht verzonden!", description: "Wij nemen zo snel mogelijk contact met u op." });
-    setForm({ naam: "", telefoon: "", email: "", bericht: "" });
+
+    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      toast({ title: "Ongeldig e-mailadres", description: "Vul een geldig e-mailadres in of laat het veld leeg.", variant: "destructive" });
+      return;
+    }
+
+    const subject = encodeURIComponent("Contactaanvraag via Slotenmaker Maarten website");
+    const body = encodeURIComponent(
+      `Naam: ${form.naam}\nTelefoon: ${form.telefoon}\nEmail: ${form.email || "Niet opgegeven"}\n\nBericht:\n${form.bericht}`
+    );
+    window.location.href = `mailto:contact@slotenmakermaarten.nl?subject=${subject}&body=${body}`;
+
+    toast({
+      title: "E-mailprogramma geopend",
+      description: "Uw e-mailprogramma is geopend. Controleer het bericht en klik op verzenden.",
+    });
   };
 
   return (
@@ -55,6 +69,9 @@ const Contact = () => {
                     <Send className="h-4 w-4" />
                     Verstuur Bericht
                   </Button>
+                  <p className="text-xs text-muted-foreground text-center">
+                    Na het klikken op verzenden opent uw e-mailprogramma met een vooraf ingevuld bericht.
+                  </p>
                 </form>
               </CardContent>
             </Card>
