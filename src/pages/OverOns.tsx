@@ -1,4 +1,5 @@
 import { Award, Clock, Shield, CheckCircle, Users } from "lucide-react";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 
@@ -29,7 +30,7 @@ const OverOns = () => {
                 Wij geloven dat iedereen recht heeft op een veilig thuis en een beveiligd bedrijfspand. Daarom zijn wij 24 uur per dag, 7 dagen per week bereikbaar.
               </p>
               <Button asChild>
-                <a href="tel:+31612345678">
+                <a href={PHONE_HREF}>
                   <Phone className="h-4 w-4" />
                   Neem contact op
                 </a>

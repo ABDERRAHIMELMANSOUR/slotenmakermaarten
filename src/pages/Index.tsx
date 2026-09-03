@@ -3,15 +3,10 @@ import { Phone, FileText, Shield, Clock, KeyRound, DoorOpen, Lock, CheckCircle, 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import heroBg from "@/assets/hero-bg.jpeg";
+import { services } from "@/data/services";
+import { cities } from "@/data/cities";
+import { PHONE_DISPLAY, PHONE_HREF, BASE_CITY, BASE_REGION } from "@/config/site";
 
-const services = [
-  { icon: DoorOpen, title: "Buitensluiting", desc: "Snel en zonder schade uw deur geopend." },
-  { icon: Lock, title: "Sloten Vervangen", desc: "Nieuwe sloten met SKG-certificering." },
-  { icon: Shield, title: "Inbraakbeveiliging", desc: "Preventief uw woning of bedrijf beveiligen." },
-  { icon: KeyRound, title: "Cilindersloten", desc: "Alle merken en typen cilindersloten." },
-  { icon: FileText, title: "Sloten Reparatie", desc: "Vakkundige reparatie van alle sloten." },
-  { icon: Award, title: "Gecertificeerd Werk", desc: "SKG gecertificeerde sloten en montage." },
-];
 
 const usps = [
   { icon: Clock, title: "24/7 Bereikbaar", desc: "Dag en nacht, 365 dagen per jaar" },
@@ -42,14 +37,14 @@ const Index = () => {
         <div className="container relative z-10 py-20 md:py-32">
           <div className="max-w-2xl space-y-6">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-white leading-tight">
-              24/7 Slotenmaker – Binnen 30 Minuten Ter Plaatse
+              Slotenmaker Tiel &amp; Rivierenland — 24/7 spoed, binnen 20 minuten
             </h1>
             <p className="text-lg md:text-xl text-white/90">
-              Direct hulp bij buitensluiting, kapotte sloten of inbraakschade
+              Direct hulp bij buitensluiting, kapotte sloten of inbraakschade. Geen voorrijkosten, vaste prijs vooraf.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="text-lg px-8 py-6 font-bold">
-                <a href="tel:+31344700234">
+                <a href={PHONE_HREF}>
                   <Phone className="h-5 w-5" />
                   Bel Nu
                 </a>
@@ -74,15 +69,20 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
-              <Card key={s.title} className="group hover:shadow-lg transition-shadow border-border">
-                <CardContent className="p-6 flex flex-col items-start gap-4">
-                  <div className="p-3 rounded-lg bg-secondary">
-                    <s.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-heading font-bold text-lg">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground">{s.desc}</p>
-                </CardContent>
-              </Card>
+              <Link key={s.slug} to={`/diensten/${s.slug}`} className="group">
+                <Card className="h-full hover:shadow-lg transition-shadow border-border">
+                  <CardContent className="p-6 flex flex-col items-start gap-4">
+                    <div className="p-3 rounded-lg bg-secondary">
+                      <s.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-lg group-hover:text-primary transition-colors">
+                      {s.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{s.summary}</p>
+                    <p className="text-sm font-semibold">Vanaf {s.priceFrom}</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-8">
@@ -169,6 +169,42 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Werkgebied — crawlable internal links to every city page */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-2xl md:text-4xl font-heading font-bold mb-4">
+              Slotenmaker in {BASE_REGION} en omgeving
+            </h2>
+            <p className="text-muted-foreground">
+              Vanuit {BASE_CITY} bedienen wij {cities.length} plaatsen. Bekijk de aanrijtijd en
+              de mogelijkheden voor uw plaats.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {cities.map((c) => (
+              <Link
+                key={c.slug}
+                to={`/slotenmaker/${c.slug}`}
+                className="group px-4 py-3 rounded-lg border border-border hover:border-primary transition-colors"
+              >
+                <span className="block text-sm font-semibold group-hover:text-primary transition-colors">
+                  Slotenmaker {c.name}
+                </span>
+                <span className="block text-xs text-muted-foreground mt-0.5">
+                  ± {c.responseMinutes} min
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Button asChild variant="outline">
+              <Link to="/werkgebied">Bekijk het volledige werkgebied <ArrowRight className="h-4 w-4" /></Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Banner */}
       <section className="bg-primary py-12 md:py-16">
         <div className="container text-center space-y-4">
@@ -177,9 +213,9 @@ const Index = () => {
           </h2>
           <p className="text-primary-foreground/90 text-lg">Wij zijn 24/7 bereikbaar en binnen 30 minuten bij u.</p>
           <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 font-bold border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent">
-            <a href="tel:+31344700234">
+            <a href={PHONE_HREF}>
               <Phone className="h-5 w-5" />
-              +31 344 700 234
+              {PHONE_DISPLAY}
             </a>
           </Button>
         </div>
