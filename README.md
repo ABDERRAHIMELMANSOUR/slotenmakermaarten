@@ -50,6 +50,21 @@ npm run dev
 - Click on "New codespace" to launch a new Codespace environment.
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
+## SEO and indexing
+
+This site is prerendered to static HTML at build time and has a documented SEO
+architecture. Before changing routing, metadata, `vercel.json` or the city and
+service data, read [`docs/SEO.md`](docs/SEO.md) — it explains the Search Console
+failures the current setup fixes and which file owns each concern.
+
+Useful commands:
+
+```sh
+npm run build       # client build + SSR build + prerender + sitemap/robots
+npm test            # SEO invariants (canonicals, titles, sitemap, JSON-LD)
+npm run verify:seo  # audits the built dist/ output
+```
+
 ## What technologies are used for this project?
 
 This project is built with:

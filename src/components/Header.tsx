@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/config/site";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,7 @@ import logo from "@/assets/logo.png";
 const navItems = [
   { label: "Home", path: "/" },
   { label: "Diensten", path: "/diensten" },
+  { label: "Werkgebied", path: "/werkgebied" },
   { label: "Portfolio", path: "/portfolio" },
   { label: "Over Ons", path: "/over-ons" },
   { label: "Contact", path: "/contact" },
@@ -39,12 +41,12 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="tel:+31344700234" className="hidden md:flex items-center gap-2 text-sm font-semibold text-foreground">
+          <a href={PHONE_HREF} className="hidden md:flex items-center gap-2 text-sm font-semibold text-foreground">
             <Phone className="h-4 w-4 text-primary" />
-            +31 344 700 234
+            {PHONE_DISPLAY}
           </a>
           <Button asChild className="hidden sm:inline-flex font-semibold">
-            <a href="tel:+31344700234">
+            <a href={PHONE_HREF}>
               <Phone className="h-4 w-4" />
               Bel Nu
             </a>
@@ -78,11 +80,11 @@ const Header = () => {
               </Link>
             ))}
             <a
-              href="tel:+31612345678"
+              href={PHONE_HREF}
               className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-primary"
             >
               <Phone className="h-4 w-4" />
-              +31 344 700 234
+              {PHONE_DISPLAY}
             </a>
           </nav>
         </div>

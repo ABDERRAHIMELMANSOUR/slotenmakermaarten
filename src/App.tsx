@@ -1,37 +1,32 @@
+import { BrowserRouter, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Index from "./pages/Index";
-import Diensten from "./pages/Diensten";
-import Portfolio from "./pages/Portfolio";
-import OverOns from "./pages/OverOns";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+import AppShell from "./AppShell";
+import ClientOnly from "@/components/ClientOnly";
+import { useDocumentHead } from "./seo/useDocumentHead";
 
-const queryClient = new QueryClient();
+/** Client-only concerns: head sync and scroll restoration on navigation. */
+const ClientEffects = () => {
+  const { pathname } = useLocation();
+  useDocumentHead();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+  <BrowserRouter>
+    <ClientEffects />
+    <AppShell />
+    {/* Toast portals add DOM the prerenderer never emits, so they mount after
+        hydration — otherwise React discards the prerendered markup. */}
+    <ClientOnly>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/diensten" element={<Diensten />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/over-ons" element={<OverOns />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+    </ClientOnly>
+  </BrowserRouter>
 );
 
 export default App;

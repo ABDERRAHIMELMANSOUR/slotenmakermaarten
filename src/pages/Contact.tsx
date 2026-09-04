@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/config/site";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -81,7 +82,7 @@ const Contact = () => {
               <h2 className="text-xl font-heading font-bold">Contactgegevens</h2>
               <div className="space-y-4">
                 {[
-                  { icon: Phone, label: "Telefoon", value: "+31 344 700 234", href: "tel:+31344700234" },
+                  { icon: Phone, label: "Telefoon", value: PHONE_DISPLAY, href: PHONE_HREF },
                   { icon: Mail, label: "E-mail", value: "contact@slotenmakermaarten.nl", href: "mailto:contact@slotenmakermaarten.nl" },
                   { icon: MapPin, label: "Adres", value: "Amsterdam, Nederland" },
                   { icon: Clock, label: "Bereikbaarheid", value: "24/7 — 365 dagen per jaar" },
@@ -112,9 +113,9 @@ const Contact = () => {
               </div>
 
               <Button asChild size="lg" className="w-full font-bold mt-4">
-                <a href="tel:+31344700234">
+                <a href={PHONE_HREF}>
                   <Phone className="h-5 w-5" />
-                  Bel Direct — +31 344 700 234
+                  Bel Direct — {PHONE_DISPLAY}
                 </a>
               </Button>
             </div>
